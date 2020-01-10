@@ -60,6 +60,7 @@ export default {
     data: () => ({
         notas: [],
         nota: {nombre: '', descripcion: ''},
+        notaEditar: {},
         agregar: true,
         mensaje: {color: 'success', texto: ''},
         dismissSecs: 5,
@@ -130,8 +131,9 @@ export default {
         },
 
         activarEdicion(id){
+            console.log('Edicion false')
             this.agregar = false;
-            this.axios.get(`buscar/?_id=${id}`)
+            this.axios.get(`nota/${id}`)
             .then(res => {
                 this.notaEditar = res.data;
             })
